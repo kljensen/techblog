@@ -1,0 +1,14 @@
+- alacritty
+- nord
+- home router
+- hetun
+- new unix tools
+- nord
+- imac graphics card
+- look at my apple notes...
+- tmux
+- c10k
+- pass diary
+- ssh bastions/jump server
+- unbound client-specific stuff
+- kids pf script
