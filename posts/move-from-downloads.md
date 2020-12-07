@@ -13,7 +13,7 @@ mvd () {
   
     # List, select, and move files to the destination
     /bin/ls -t $HOME/Downloads | \
-        fzf |\
+        fzf | \
         sed "s@^@$HOME/Downloads/@"| 
         tr "\n" "\0"| \
         xargs -t -0 -J % mv "%" $DESTINATION
@@ -30,4 +30,6 @@ working directory. Alternatively, if I pass a destination directory like `mvd
 I give the `ls` command the `-t` argument so that the most recently modified
 files are at the top. These are typically the files I most recently downloaded.
 The `tr` command and the `-0` argument to `xargs` are needed to handle
-filenames that have spaces in them. 
+filenames that have spaces in them. I tested this function on Mac OS 10.15.6
+"Catalina", which uses BSD versions of the `ls`, `sed`, `tr`, and `xargs`
+commands.
