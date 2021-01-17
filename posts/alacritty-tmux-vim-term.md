@@ -36,24 +36,20 @@ And in my `.tmux.conf` the following
 
 ```
 set  -g default-terminal 'tmux-256color'
-set -ga terminal-overrides ',alacritty*:RGB:sitm=\E[3m'
 ```
 
-To test everything is working OK, download [this shell
-script](https://gist.githubusercontent.com/lifepillar/09a44b8cf0f9397465614e622979107f/raw/24-bit-color.sh)
-and run it.  When you run that you should see a beautiful, smooth gradient
-of colors across your terminal, without discernible borders between the colors.
-Also try
-
-```
-echo -e "\e[3m foo \e[23m"
-```
-
-which should print "foo" in italics. Of course, you'll need to specify
-an italic font for such cases. In my `alacritty.yaml` I have the following,
-among other content
+Of course, you'll need to specify an italic font for such cases. In my
+`alacritty.yaml` I have the following, among other content. There's two
+important pieces. First, I tell alacritty to use "alacritty-direct" terminfo
+data, which is described a bit
+[here](https://github.com/alacritty/alacritty/issues/1485) and then I tell it
+what italic font I prefer. (If you're missing the alacritty terminfo file, see
+[this installation
+instructions](https://github.com/alacritty/alacritty/blob/master/INSTALL.md).)
 
 ```yaml
+env:
+  TERM: alacritty-direct
 font:
   # The size to use.
   size: 14
@@ -82,3 +78,18 @@ font:
     family: MesloLGMDZ Nerd Font
     style: Italic
 ```
+
+To test everything is working OK, download [this shell
+script](https://gist.githubusercontent.com/lifepillar/09a44b8cf0f9397465614e622979107f/raw/24-bit-color.sh)
+and run it.  When you run that you should see a beautiful, smooth gradient
+of colors across your terminal, without discernible borders between the colors.
+Also try
+
+```
+echo -e "\e[3m foo \e[23m"
+```
+
+which should print "foo" in italics. You should test this both in alacritty and
+in alacritty+tmux. Here is how my output looks
+
+![Alacritty and tmux with true colors](alacritty-tmux-colors.png "Alacritty and tmux with true colors")
