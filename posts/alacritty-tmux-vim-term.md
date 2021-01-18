@@ -93,3 +93,16 @@ which should print "foo" in italics. You should test this both in alacritty and
 in alacritty+tmux. Here is how my output looks
 
 ![Alacritty and tmux with true colors](alacritty-tmux-colors.png "Alacritty and tmux with true colors")
+
+Finally, in my `init.vim` for Neovim I have 
+
+```
+if exists('+termguicolors')
+  set termguicolors
+endif
+```
+
+so that Neovim knows to use "true colors". I use the 
+[Nord theme](https://www.nordtheme.com/) on Alacritty, tmux, and
+neovim now---I noticed some improvement using true color over
+256 colors.
